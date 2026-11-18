@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Proposed Live Ashik Reference Color Tokens */
+  --theme-accent: #cdfe7d;
+  --theme-accent-secondary: #905efb;
+  --theme-black: #000000;
+  --theme-white: #ffffff;
+  --theme-dark: #222222;
+  --theme-text: #5e5f63;
+  --theme-gray: #f6f7f9;
+  --theme-gray-2: #cccccc;
+  --theme-gray-3: #d9d9d9;
+  --theme-gray-4: #5a5a5a;
+  --theme-rating: #ffd234;
+  --theme-drawer-bg: #0f0f13;
+  --theme-border-btn: rgba(0, 0, 0, 0.2);
+  --theme-border-input: rgba(0, 0, 0, 0.12);
+
+  /* Elevation & Geometry */
+  --theme-shadow-card: 0px 0px 60px 0px rgba(0, 0, 0, 0.05);
+  --theme-shadow-header: 0px 4px 14px rgba(0, 0, 0, 0.15);
+  --radius-section: 30px;
+  --radius-card-md: 20px;
+  --radius-button: 15px;
+  --radius-control: 10px;
+  --radius-social: 5px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--theme-accent);
+  --color-accent-secondary: var(--theme-accent-secondary);
+  --color-canvas: var(--theme-white);
+  --color-surface: var(--theme-gray);
+  --color-contrast: var(--theme-black);
+  --color-heading: var(--theme-dark);
+  --color-body: var(--theme-text);
+  --color-muted: var(--theme-gray-4);
+  --color-border-subtle: var(--theme-gray-2);
+  --color-border-light: var(--theme-gray-3);
+  --color-rating: var(--theme-rating);
+  --color-drawer: var(--theme-drawer-bg);
+
+  --font-sans: var(--font-spline-sans), "Spline Sans", system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Document Defaults (Light Reference Palette — No Auto Dark Override) */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--theme-white);
+  color: var(--theme-text);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--theme-white);
+  color: var(--theme-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 28px;
+  overflow-x: clip;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* Accessible Focus Rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--theme-dark);
+  outline-offset: 2px;
+}
+
+/* Container Rhythm Matching Ashik (1320px max + 15px gutter) */
+.ashik-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+/* Ashik Inset Rounded Section Band */
+.ashik-inset-band {
+  border-radius: var(--radius-section);
+  margin-inline: 15px;
+}
+
+@media (min-width: 1200px) {
+  .ashik-inset-band {
+    margin-inline: 40px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .ashik-inset-band {
+    margin-inline: 80px;
+  }
+}
+
+/* Card Elevation */
+.ashik-card-shadow {
+  box-shadow: var(--theme-shadow-card);
+}
+
+.ashik-header-shadow {
+  box-shadow: var(--theme-shadow-header);
+}
+
+/* Ashik Projects Timeline Left Rail + 6px Circular Dots */
+.ashik-timeline-item {
+  position: relative;
+  border-left: 1px solid var(--theme-gray-2);
+}
+
+.ashik-timeline-item::before,
+.ashik-timeline-item::after {
+  content: "";
+  position: absolute;
+  left: -3.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--theme-dark);
+}
+
+.ashik-timeline-item::before {
+  top: 0;
+}
+
+.ashik-timeline-item::after {
+  bottom: 0;
+}
+
+/* Sticky Header SlideDown Keyframe (Matched to Ashik 0.5s ease-in-out) */
+@keyframes ashikSlideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-header-slide-down {
+  animation: ashikSlideDown 0.5s ease-in-out forwards;
+}
+
+/* Hero Masked Headline Upward Reveal */
+@keyframes ashikRevealUp {
+  0% {
+    transform: translateY(105%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-reveal-line {
+  display: inline-block;
+  animation: ashikRevealUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Gentle Scroll Reveal Utility */
+.ashik-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ashik-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-header-slide-down,
+  .animate-reveal-line {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ashik-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
