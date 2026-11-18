@@ -193,6 +193,26 @@ export function StarAccentIcon({ className = "w-10 h-10" }) {
   );
 }
 
+export function WavyAccentIcon({ className = "w-11 h-3" }) {
+  return (
+    <svg
+      viewBox="0 0 54 12"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      className={className}
+    >
+      <path
+        d="M2 9C6 3 10 3 14 9C18 15 22 3 26 9C30 15 34 3 38 9C42 15 46 3 52 9"
+        stroke="currentColor"
+        strokeWidth="2.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function RatingStarIcon({ className = "w-4 h-4" }) {
   return (
     <svg
