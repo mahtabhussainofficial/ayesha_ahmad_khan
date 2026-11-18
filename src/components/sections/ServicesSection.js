@@ -29,7 +29,7 @@ export default function ServicesSection() {
               index === 3
                 ? "lg:col-start-2 lg:col-span-2"
                 : index === 4
-                ? "md:col-span-2 md:max-w-[calc(50%-15px)] md:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2"
+                ? "md:col-span-2 md:w-full md:max-w-[calc(50%-15px)] md:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2"
                 : "lg:col-span-2";
 
             return (

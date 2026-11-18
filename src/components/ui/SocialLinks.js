@@ -1,9 +1,9 @@
 import { SocialIcon } from "@/components/ui/Icons";
 
 /**
- * Ashik 40x40px square social buttons (border-radius: 5px, #fff -> #cdfe7d hover).
- * Renders real external links ONLY when confirmed URLs exist; renders accessible
- * non-navigating placeholders otherwise so zero dead or fabricated links exist.
+ * Ashik 40x40px square social buttons (border-radius: 5px, #fff -> #cdfe7d hover + lift).
+ * Renders real external links when confirmed URLs exist, and clean hover-interactive
+ * editable placeholders while URLs are pending confirmation.
  */
 export default function SocialLinks({ socials = [], className = "" }) {
   if (!socials.length) return null;
@@ -12,7 +12,7 @@ export default function SocialLinks({ socials = [], className = "" }) {
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       {socials.map((item) => {
         const sharedClass =
-          "inline-flex items-center justify-center w-[42px] h-[42px] rounded-[5px] bg-canvas text-heading transition-colors duration-300";
+          "inline-flex items-center justify-center w-[42px] h-[42px] rounded-[5px] bg-canvas text-heading border border-black/10 transition-all duration-300 ease-out hover:bg-accent hover:text-contrast hover:border-accent hover:-translate-y-1 ashik-card-shadow";
 
         if (item.href) {
           return (
@@ -23,7 +23,7 @@ export default function SocialLinks({ socials = [], className = "" }) {
               rel="noopener noreferrer"
               aria-label={item.label}
               title={item.label}
-              className={`${sharedClass} hover:bg-accent hover:text-contrast`}
+              className={`${sharedClass} cursor-pointer`}
             >
               <SocialIcon id={item.id} className="w-[18px] h-[18px]" />
             </a>
@@ -36,7 +36,7 @@ export default function SocialLinks({ socials = [], className = "" }) {
             role="img"
             aria-label={`${item.label} link pending confirmation`}
             title={`${item.label} — URL pending confirmation`}
-            className={`${sharedClass} opacity-65 border border-black/10 cursor-default`}
+            className={`${sharedClass} cursor-pointer`}
           >
             <SocialIcon id={item.id} className="w-[18px] h-[18px]" />
           </span>

@@ -9,13 +9,37 @@ const splineSans = Spline_Sans({
   variable: "--font-spline-sans",
 });
 
+const siteTitle = `${profile.fullName} — ${profile.roleLine}`;
+
 export const metadata = {
-  title: `${profile.fullName} — ${profile.roleLine}`,
+  title: siteTitle,
   description: profile.seoDescription,
+  keywords: [
+    "Ayesha Ahmad Khan",
+    "WordPress Developer",
+    "Elementor Expert",
+    "WooCommerce Development",
+    "WordPress Website Redesign",
+    "WordPress Speed Optimization",
+    "WordPress Security & Migration",
+  ],
+  authors: [{ name: profile.fullName }],
+  creator: profile.fullName,
   openGraph: {
-    title: `${profile.fullName} — ${profile.roleLine}`,
+    title: siteTitle,
     description: profile.seoDescription,
+    siteName: `${profile.fullName} Portfolio`,
+    locale: "en_US",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: profile.seoDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

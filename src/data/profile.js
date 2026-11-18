@@ -34,10 +34,10 @@ export const profile = {
 
   about: {
     eyebrow: "ABOUT ME",
-    headline: "Building Reliable WordPress & Elementor Experiences",
+    headline: "Engineering-Backed WordPress & Elementor Craft",
     paragraphs: [
-      "I am Ayesha Ahmad Khan, a WordPress Developer and Elementor Expert focused on turning brand goals into structured, maintainable, and responsive websites.",
-      "Backed by a BS in Computer Science from PUCIT (2020–2024), I combine solid software engineering fundamentals with hands-on WordPress, Elementor, and WooCommerce craftsmanship.",
+      "I am Ayesha Ahmad Khan, a WordPress Developer and Elementor Expert focused on turning business goals into structured, maintainable, and responsive websites.",
+      "With a BS in Computer Science from PUCIT (2020–2024), I pair clean software fundamentals with practical WordPress, Elementor, and WooCommerce execution—from custom builds and full redesigns to speed, security, and migrations.",
     ],
     education: {
       degree: "BS Computer Science",
@@ -52,29 +52,29 @@ export const profile = {
     strengthsRight: [
       "Site Redesign & Rebranding",
       "Speed & Technical SEO Focus",
-      "Ongoing Maintenance & Security",
+      "Maintenance & Security",
     ],
-    // Verified highlight card inside the About right column.
-    // Note (PA-01): Once "5+ years experience" wording is verified, this card can display that approved stat.
-    highlightCard: {
-      value: "BS CS",
-      label: "PUCIT · 2020–2024",
-      pendingNote: "Experience stat pending final verification",
+    stats: {
+      projectsDelivered: {
+        value: "300+",
+        label: "Projects Delivered",
+        subtext: "WordPress, Elementor & WooCommerce builds",
+      },
+      experience: {
+        value: "5+",
+        label: "Years Experience",
+        subtext: "Hands-on frontend & WordPress delivery",
+      },
     },
     images: {
       primary: {
-        // TODO (PA-03): Replace null with "/images/profile/about-portrait-1.webp"
-        src: null,
-        alt: "Ayesha Ahmad Khan working on WordPress development",
-        placeholderLabel: "About Visual 01",
-        placeholderSubtext: "Awaiting approved asset (1:1.26)",
+        // Swap with "/images/profile/about-portrait.webp" anytime once approved portrait is supplied.
+        src: "/images/profile/about-studio-1.webp",
+        alt: "Minimalist sunlit studio workspace displaying a structured web design layout on a laptop",
       },
       secondary: {
-        // TODO (PA-03): Replace null with "/images/profile/about-portrait-2.webp"
-        src: null,
-        alt: "Elementor and WordPress workflow preview",
-        placeholderLabel: "About Visual 02",
-        placeholderSubtext: "Awaiting approved asset (1:1.64)",
+        src: "/images/profile/about-studio-2.webp",
+        alt: "Tablet and smartphone showing clean responsive wireframe and layout design blocks",
       },
     },
   },

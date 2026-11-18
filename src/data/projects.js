@@ -5,7 +5,7 @@
  * Content integrity rules:
  * - Projects 01–05 include supplied titles, categories, descriptions, and services.
  * - Projects 06–10 include supplied titles and categories ONLY (no invented copy/services).
- * - All 10 projects use locally stored, web-optimized 1200x800 (3:2) WebP browser mockups under public/images/projects/.
+ * - All 10 projects use edge-to-edge cropped, web-optimized 1200x800 (3:2) WebP mockups under public/images/projects/.
  * - Live URLs remain null until verified project URLs are provided.
  */
 export const projects = [
@@ -14,7 +14,6 @@ export const projects = [
     number: "01",
     featured: true,
     title: "Beauty Studio Website Development",
-    shortTitle: "Beauty Studio Website",
     category: "WordPress Website Design & Development",
     platform: "WordPress / Elementor",
     summary:
@@ -27,7 +26,7 @@ export const projects = [
       "UI/UX improvements",
       "Website styling and customization",
     ],
-    image: "/images/projects/01-beauty-studio.webp",
+    image: "/images/projects/beauty-studio.webp",
     imageAlt:
       "Desktop browser mockup of the Beauty Studio WordPress and Elementor website featuring an ivory editorial hero, appointment booking CTA, and three-column service cards",
     liveUrl: null,
@@ -37,7 +36,6 @@ export const projects = [
     number: "02",
     featured: true,
     title: "Nonprofit Organization Website Development",
-    shortTitle: "Nonprofit Organization Website",
     category: "WordPress Website Development",
     platform: "WordPress",
     summary:
@@ -50,7 +48,7 @@ export const projects = [
       "Navigation and layout improvements",
       "User-friendly website structure",
     ],
-    image: "/images/projects/02-nonprofit-organization.webp",
+    image: "/images/projects/nonprofit-organization.webp",
     imageAlt:
       "Desktop browser mockup of the Nonprofit Organization WordPress website displaying accessible navigation, community volunteer hero section, and three initiative cards",
     liveUrl: null,
@@ -60,7 +58,6 @@ export const projects = [
     number: "03",
     featured: true,
     title: "Suriname Tour Website Redesign & E-commerce",
-    shortTitle: "Suriname Tour Website Redesign",
     category: "WordPress Redesign & WooCommerce",
     platform: "WordPress / WooCommerce",
     summary:
@@ -73,7 +70,7 @@ export const projects = [
       "Navigation improvements",
       "Content and shop management",
     ],
-    image: "/images/projects/03-suriname-tour-ecommerce.webp",
+    image: "/images/projects/suriname-tour-ecommerce.webp",
     imageAlt:
       "Desktop browser mockup of the Suriname Tour WordPress and WooCommerce redesign featuring a tropical rainforest hero banner, tour search bar, and three bookable tour cards",
     liveUrl: null,
@@ -83,7 +80,6 @@ export const projects = [
     number: "04",
     featured: false,
     title: "Landscaping Company Website Redesign",
-    shortTitle: "Landscaping Company Website",
     category: "WordPress Website Redesign",
     platform: "WordPress",
     summary:
@@ -96,7 +92,7 @@ export const projects = [
       "UI/UX improvements",
       "Website customization",
     ],
-    image: "/images/projects/04-landscaping-company.webp",
+    image: "/images/projects/landscaping-company.webp",
     imageAlt:
       "Desktop browser mockup of the Landscaping Company WordPress website redesign showing an architectural patio hero, quote CTA, and garden design, hardscaping, and lawn care cards",
     liveUrl: null,
@@ -106,11 +102,10 @@ export const projects = [
     number: "05",
     featured: false,
     title: "Speaking Business Website Rebranding",
-    shortTitle: "Speaking Business Website Rebranding",
     category: "Website Design & Rebranding",
     platform: "Website Redesign",
     summary:
-      "Transformed an existing speaking business website with an updated brand presentation and professional website design. Improved visual consistency, typography, page layouts, and overall user experience.",
+      "Successfully transformed an existing speaking business website with an updated brand presentation and professional website design. Improved visual consistency, clear typography, navigation, page layouts, and overall engaging user experience throughout.",
     services: [
       "Website rebranding",
       "WordPress design",
@@ -118,7 +113,7 @@ export const projects = [
       "Typography and color styling",
       "Responsive website development",
     ],
-    image: "/images/projects/05-speaking-business-rebranding.webp",
+    image: "/images/projects/speaking-business-rebranding.webp",
     imageAlt:
       "Desktop browser mockup of the Speaking Business website rebrand with refined navy and gold typography, keynote stage photography, and structured speaking topic highlights",
     liveUrl: null,
@@ -132,7 +127,7 @@ export const projects = [
     platform: "WordPress / SEO",
     summary: null,
     services: [],
-    image: "/images/projects/06-senior-community-seo.webp",
+    image: "/images/projects/senior-community-seo.webp",
     imageAlt:
       "Desktop browser mockup of a Senior Community WordPress website featuring high-contrast accessible typography, warm teal navigation, courtyard imagery, and living option cards",
     liveUrl: null,
@@ -146,7 +141,7 @@ export const projects = [
     platform: "WordPress Security",
     summary: null,
     services: [],
-    image: "/images/projects/07-wordpress-malware-security.webp",
+    image: "/images/projects/wordpress-malware-security.webp",
     imageAlt:
       "Desktop browser mockup of a WordPress security and malware protection dashboard showing verified clean scan, active firewall, SSL protection, and security checks",
     liveUrl: null,
@@ -160,7 +155,7 @@ export const projects = [
     platform: "Elementor",
     summary: null,
     services: [],
-    image: "/images/projects/08-elementor-page-cloning.webp",
+    image: "/images/projects/elementor-page-cloning.webp",
     imageAlt:
       "Desktop browser mockup of the Elementor page builder workspace displaying a pixel-accurate multi-column landing page with spacing guides and widget sidebar",
     liveUrl: null,
@@ -174,7 +169,7 @@ export const projects = [
     platform: "Performance",
     summary: null,
     services: [],
-    image: "/images/projects/09-wordpress-speed-optimization.webp",
+    image: "/images/projects/wordpress-speed-optimization.webp",
     imageAlt:
       "Desktop browser mockup of a WordPress website speed optimization dashboard displaying performance gauges, load-time waterfall chart, and WebP caching checklist",
     liveUrl: null,
@@ -188,7 +183,7 @@ export const projects = [
     platform: "Migration",
     summary: null,
     services: [],
-    image: "/images/projects/10-wordpress-migration-troubleshooting.webp",
+    image: "/images/projects/wordpress-migration-troubleshooting.webp",
     imageAlt:
       "Desktop browser mockup of a WordPress migration and diagnostics console showing source host, staging check, and live server transfer pipeline with verified checks",
     liveUrl: null,

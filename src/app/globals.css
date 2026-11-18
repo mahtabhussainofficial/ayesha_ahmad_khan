@@ -64,13 +64,19 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
-/* Accessible Focus Rings */
+/* Accessible Focus Rings (Light & Dark Surfaces) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--theme-dark);
+  outline-offset: 2px;
+}
+
+[data-dark-surface="true"] a:focus-visible,
+[data-dark-surface="true"] button:focus-visible {
+  outline: 2px solid var(--theme-accent);
   outline-offset: 2px;
 }
 

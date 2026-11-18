@@ -8,17 +8,35 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CountersSection from "@/components/sections/CountersSection";
 import ContactSection from "@/components/sections/ContactSection";
+import { profile } from "@/data/profile";
+import { services } from "@/data/services";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.fullName,
+  jobTitle: profile.roleLine,
+  description: profile.seoDescription,
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Punjab University College of Information Technology (PUCIT)",
+  },
+  knowsAbout: services.map((service) => service.title),
+};
 
 /**
  * Single-page portfolio for Ayesha Ahmad Khan following the verified Ashik section order:
  * 01 Header -> 02 Hero -> 03 About -> 04 Services -> 05 Projects ->
- * 06 Testimonials (hidden until verified) -> 07 Counters (hidden until verified) ->
+ * 06 Testimonials -> 07 Counters (hidden until verified) ->
  * 08 Contact -> 09 Footer + BackToTop utility.
- * Preloader is omitted from the initial implementation (CD-03).
  */
 export default function HomePage() {
   return (
     <div className="relative min-h-screen flex flex-col bg-canvas">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <Header />
       <main className="flex-1">
         <HeroSection />

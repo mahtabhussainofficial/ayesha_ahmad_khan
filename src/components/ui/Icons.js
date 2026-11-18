@@ -173,26 +173,6 @@ export function ChevronRightIcon({ className = "w-5 h-5" }) {
   );
 }
 
-export function StarAccentIcon({ className = "w-10 h-10" }) {
-  return (
-    <svg
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        d="M24 2L28.8 19.2L46 24L28.8 28.8L24 46L19.2 28.8L2 24L19.2 19.2L24 2Z"
-        fill="#cdfe7d"
-        stroke="#222222"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function WavyAccentIcon({ className = "w-11 h-3" }) {
   return (
     <svg
