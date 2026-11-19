@@ -20,15 +20,18 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Uppercase Display H1, Role, Positioning & CTAs */}
           <div className="lg:col-span-7 2xl:col-span-6">
-            <p className="inline-flex items-center gap-2.5 text-[14px] sm:text-[15px] font-semibold uppercase tracking-[0.08em] text-heading mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface border border-black/8 text-[10px] sm:text-[13px] font-semibold uppercase tracking-[0.04em] sm:tracking-[0.06em] text-heading mb-4 sm:mb-5">
               <span
-                className="inline-block w-2.5 h-2.5 rounded-full bg-accent border border-heading/20"
+                className="w-2 h-2 rounded-full bg-accent shrink-0"
                 aria-hidden="true"
               />
-              <span>{roleBadge}</span>
-            </p>
+              <span className="whitespace-nowrap">{roleBadge}</span>
+            </div>
 
-            <h1 className="text-[38px] leading-[46px] sm:text-[52px] sm:leading-[62px] md:text-[58px] md:leading-[68px] lg:text-[68px] lg:leading-[80px] xl:text-[80px] xl:leading-[94px] font-bold uppercase text-contrast tracking-[-0.02em]">
+            <h1
+              className="text-[32px] leading-[40px] sm:text-[50px] sm:leading-[60px] md:text-[58px] md:leading-[68px] lg:text-[68px] lg:leading-[80px] xl:text-[80px] xl:leading-[94px] font-bold uppercase text-contrast tracking-[-0.02em]"
+              aria-label={hero.headlineLines.join(" ")}
+            >
               {hero.headlineLines.map((line, index) => (
                 <span key={line} className="block overflow-hidden">
                   <span
@@ -36,20 +39,28 @@ export default function HeroSection() {
                     style={{ animationDelay: `${index * 110}ms` }}
                   >
                     {line}
-                  </span>
+                  </span>{" "}
                 </span>
               ))}
             </h1>
 
-            <p className="mt-6 max-w-[540px] text-[16px] leading-[28px] text-body">
+            <p className="mt-5 sm:mt-6 max-w-[540px] text-[15px] sm:text-[16px] leading-[26px] sm:leading-[28px] text-body">
               {hero.positioning}
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Button href={hero.primaryCta.href} variant="primary">
+            <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+              <Button
+                href={hero.primaryCta.href}
+                variant="primary"
+                className="w-full sm:w-auto text-center justify-center"
+              >
                 {hero.primaryCta.label}
               </Button>
-              <Button href={hero.secondaryCta.href} variant="secondary">
+              <Button
+                href={hero.secondaryCta.href}
+                variant="secondary"
+                className="w-full sm:w-auto text-center justify-center"
+              >
                 {hero.secondaryCta.label}
               </Button>
             </div>

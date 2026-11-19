@@ -33,7 +33,7 @@ export default function AboutSection() {
                 <WavyAccentIcon className="w-11 h-3 text-heading" />
               </p>
 
-              <h2 className="mt-2 text-[32px] leading-[40px] sm:text-[42px] sm:leading-[50px] lg:text-[48px] lg:leading-[58px] xl:text-[56px] xl:leading-[66px] font-bold tracking-[-0.015em] text-heading">
+              <h2 className="mt-2 text-[26px] leading-[34px] sm:text-[38px] sm:leading-[46px] lg:text-[48px] lg:leading-[58px] xl:text-[56px] xl:leading-[66px] font-bold tracking-[-0.015em] text-heading">
                 {about.headline}
               </h2>
 
@@ -78,11 +78,19 @@ export default function AboutSection() {
                 </ul>
               </div>
 
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Button href="#contact" variant="primary">
+              <div className="mt-8 sm:mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                <Button
+                  href="#contact"
+                  variant="primary"
+                  className="w-full sm:w-auto text-center justify-center"
+                >
                   Work With Me
                 </Button>
-                <Button href="#services" variant="secondary">
+                <Button
+                  href="#services"
+                  variant="secondary"
+                  className="w-full sm:w-auto text-center justify-center"
+                >
                   Explore Services
                 </Button>
               </div>

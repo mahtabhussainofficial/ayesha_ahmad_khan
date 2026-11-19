@@ -11,17 +11,69 @@ import ContactSection from "@/components/sections/ContactSection";
 import { profile } from "@/data/profile";
 import { services } from "@/data/services";
 
-const personJsonLd = {
+const siteUrl = "https://ayesha-ahmad-khan.vercel.app";
+
+const homepageStructuredData = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: profile.fullName,
-  jobTitle: profile.roleLine,
-  description: profile.seoDescription,
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Punjab University College of Information Technology (PUCIT)",
-  },
-  knowsAbout: services.map((service) => service.title),
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: profile.fullName,
+      jobTitle: profile.roleLine,
+      url: siteUrl,
+      description: profile.seoDescription,
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "Punjab University College of Information Technology (PUCIT)",
+      },
+      knowsAbout: [
+        "WordPress Development",
+        "Elementor",
+        "WooCommerce",
+        "Website Redesign",
+        "Speed Optimization",
+        "Website Maintenance & Security",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: `${profile.fullName} Portfolio`,
+      description: profile.seoDescription,
+      publisher: {
+        "@id": `${siteUrl}/#person`,
+      },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#service`,
+      name: `${profile.fullName} — WordPress & Elementor Services`,
+      url: siteUrl,
+      description:
+        "Professional WordPress development, Elementor design, WooCommerce setup, website redesign, and performance optimization services.",
+      provider: {
+        "@id": `${siteUrl}/#person`,
+      },
+      areaServed: "Worldwide",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "WordPress & Elementor Services",
+        itemListElement: services.map((service, index) => ({
+          "@type": "Offer",
+          position: index + 1,
+          itemOffered: {
+            "@type": "Service",
+            name: service.title,
+            description: service.shortDescription,
+            url: `${siteUrl}/services/${service.slug}`,
+          },
+        })),
+      },
+    },
+  ],
 };
 
 /**
@@ -35,7 +87,9 @@ export default function HomePage() {
     <div className="relative min-h-screen flex flex-col bg-canvas">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homepageStructuredData),
+        }}
       />
       <Header />
       <main className="flex-1">

@@ -12,7 +12,11 @@ const splineSans = Spline_Sans({
 const siteTitle = `${profile.fullName} — ${profile.roleLine}`;
 
 export const metadata = {
-  title: siteTitle,
+  metadataBase: new URL("https://ayesha-ahmad-khan.vercel.app"),
+  title: {
+    default: siteTitle,
+    template: `%s | ${profile.fullName}`,
+  },
   description: profile.seoDescription,
   keywords: [
     "Ayesha Ahmad Khan",
@@ -22,24 +26,46 @@ export const metadata = {
     "WordPress Website Redesign",
     "WordPress Speed Optimization",
     "WordPress Security & Migration",
+    "Custom WordPress Theme",
+    "Elementor Pro Developer",
   ],
   authors: [{ name: profile.fullName }],
   creator: profile.fullName,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: siteTitle,
     description: profile.seoDescription,
+    url: "https://ayesha-ahmad-khan.vercel.app",
     siteName: `${profile.fullName} Portfolio`,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/images/profile/about-studio-1.webp",
+        width: 1200,
+        height: 630,
+        alt: `${profile.fullName} — ${profile.roleLine} Portfolio`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: profile.seoDescription,
+    images: ["/images/profile/about-studio-1.webp"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

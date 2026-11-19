@@ -51,6 +51,24 @@ export function ArrowRightIcon({ className = "w-4 h-4" }) {
   );
 }
 
+export function ArrowLeftIcon({ className = "w-4 h-4" }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M16 10H4" />
+      <path d="M9 15l-5-5 5-5" />
+    </svg>
+  );
+}
+
 export function LongArrowRightIcon({ className = "w-7 h-5" }) {
   return (
     <svg
@@ -135,6 +153,23 @@ export function ChevronUpIcon({ className = "w-5 h-5" }) {
       className={className}
     >
       <path d="M5 12.5l5-5 5 5" />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ className = "w-5 h-5" }) {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={className}
+    >
+      <path d="M5 7.5l5 5 5-5" />
     </svg>
   );
 }

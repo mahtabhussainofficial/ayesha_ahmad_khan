@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/Icons";
 
 /**
@@ -18,15 +19,15 @@ export default function Button({
 }) {
   const sizeClasses =
     size === "header"
-      ? "px-6 py-3.5 text-[16px] leading-[20px] rounded-[15px]"
-      : "px-6 py-4 sm:px-[30px] sm:py-[20px] text-[16px] sm:text-[18px] leading-[21.6px] rounded-[15px]";
+      ? "px-5 py-2.5 sm:px-6 sm:py-3.5 text-[14.5px] sm:text-[16px] leading-[20px] rounded-[15px]"
+      : "px-5 py-3.5 sm:px-[30px] sm:py-[20px] text-[15px] sm:text-[18px] leading-[21.6px] rounded-[15px]";
 
   const variantClasses =
     variant === "primary"
       ? "bg-accent text-contrast border border-accent hover:bg-transparent hover:text-heading hover:border-black/20"
       : "bg-transparent text-contrast border border-black/20 hover:bg-accent hover:text-contrast hover:border-accent";
 
-  const baseClasses = `group inline-flex items-center justify-center gap-2.5 font-semibold capitalize transition-all duration-400 ease-in-out cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed ${sizeClasses} ${variantClasses} ${className}`;
+  const baseClasses = `group inline-flex items-center justify-center gap-2 font-semibold capitalize transition-all duration-400 ease-in-out cursor-pointer whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed ${sizeClasses} ${variantClasses} ${className}`;
 
   const content = (
     <>
@@ -38,6 +39,13 @@ export default function Button({
   );
 
   if (href) {
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} className={baseClasses} {...rest}>
+          {content}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={baseClasses} {...rest}>
         {content}

@@ -115,31 +115,6 @@ textarea:focus-visible {
   box-shadow: var(--theme-shadow-header);
 }
 
-/* Ashik Projects Timeline Left Rail + 6px Circular Dots */
-.ashik-timeline-item {
-  position: relative;
-  border-left: 1px solid var(--theme-gray-2);
-}
-
-.ashik-timeline-item::before,
-.ashik-timeline-item::after {
-  content: "";
-  position: absolute;
-  left: -3.5px;
-  width: 6px;
-  height: 6px;
-  border-radius: 9999px;
-  background-color: var(--theme-dark);
-}
-
-.ashik-timeline-item::before {
-  top: 0;
-}
-
-.ashik-timeline-item::after {
-  bottom: 0;
-}
-
 /* Sticky Header SlideDown Keyframe (Matched to Ashik 0.5s ease-in-out) */
 @keyframes ashikSlideDown {
   0% {
@@ -154,6 +129,38 @@ textarea:focus-visible {
 
 .animate-header-slide-down {
   animation: ashikSlideDown 0.5s ease-in-out forwards;
+}
+
+/* Gentle Page / Grid Fade In Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Staggered Card Entrance Animation for Category Transitions */
+@keyframes cardEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-enter {
+  animation: cardEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Hero Masked Headline Upward Reveal */
@@ -185,6 +192,15 @@ textarea:focus-visible {
   transform: translateY(0);
 }
 
+/* Utility to hide scrollbars while preserving horizontal touch scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Reduced Motion Compliance */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -192,7 +208,9 @@ textarea:focus-visible {
   }
 
   .animate-header-slide-down,
-  .animate-reveal-line {
+  .animate-reveal-line,
+  .animate-fade-in,
+  .animate-card-enter {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;

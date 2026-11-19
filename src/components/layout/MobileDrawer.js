@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BrandLogo, CloseIcon } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 import { navLinks } from "@/data/navigation";
@@ -19,6 +21,29 @@ export default function MobileDrawer({
 }) {
   const closeButtonRef = useRef(null);
   const wasOpenRef = useRef(false);
+  const pathname = usePathname();
+
+  const handleMobileNavClick = (e, linkId) => {
+    onClose();
+    if (pathname === "/" || pathname === "") {
+      if (linkId === "home") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.location.hash) {
+          history.pushState(null, "", "/#home");
+        }
+      } else {
+        const target = document.getElementById(linkId);
+        if (target) {
+          e.preventDefault();
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: "smooth" });
+          }, 50);
+          history.pushState(null, "", `#${linkId}`);
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -74,14 +99,14 @@ export default function MobileDrawer({
       >
         <div>
           <div className="flex items-center justify-between pb-6 border-b border-white/10">
-            <a
-              href="#home"
+            <Link
+              href="/#home"
               tabIndex={isOpen ? undefined : -1}
-              onClick={onClose}
+              onClick={(e) => handleMobileNavClick(e, "home")}
               aria-label={`${profile.fullName} Home`}
             >
               <BrandLogo dark />
-            </a>
+            </Link>
             <button
               ref={closeButtonRef}
               type="button"
@@ -100,10 +125,10 @@ export default function MobileDrawer({
                 const isActive = activeSection === link.id;
                 return (
                   <li key={link.id}>
-                    <a
+                    <Link
                       href={link.href}
                       tabIndex={isOpen ? undefined : -1}
-                      onClick={onClose}
+                      onClick={(e) => handleMobileNavClick(e, link.id)}
                       className={`flex items-center justify-between py-3 px-3 rounded-[10px] text-[16px] font-medium uppercase tracking-[0.04em] transition-colors ${
                         isActive
                           ? "bg-accent text-contrast font-semibold"
@@ -111,7 +136,7 @@ export default function MobileDrawer({
                       }`}
                     >
                       <span>{link.label}</span>
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
@@ -122,11 +147,11 @@ export default function MobileDrawer({
         <div className="pt-8 mt-8 border-t border-white/10">
           <p className="text-sm text-white/60 mb-4">{profile.roleBadge}</p>
           <Button
-            href="#contact"
+            href="/#contact"
             variant="primary"
             size="header"
             tabIndex={isOpen ? undefined : -1}
-            onClick={onClose}
+            onClick={(e) => handleMobileNavClick(e, "contact")}
             className="w-full !uppercase tracking-[0.03em]"
           >
             LET&apos;S TALK

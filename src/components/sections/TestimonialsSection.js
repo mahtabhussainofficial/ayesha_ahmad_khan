@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
     <section id="testimonials" className="mt-[80px] lg:mt-[120px]">
       <div
         data-dark-surface="true"
-        className="ashik-inset-band bg-contrast text-white pt-[72px] pb-[72px] lg:pt-[110px] lg:pb-[95px] px-[15px] sm:px-[30px] relative overflow-hidden"
+        className="ashik-inset-band bg-contrast text-white pt-[54px] pb-[54px] sm:pt-[72px] sm:pb-[72px] lg:pt-[110px] lg:pb-[95px] px-[15px] sm:px-[30px] relative overflow-hidden"
       >
         {/* Ashik-style subtle left fade mask on wide desktop */}
         <div
@@ -70,7 +70,7 @@ export default function TestimonialsSection() {
                 <span>TESTIMONIALS</span>
                 <WavyAccentIcon className="w-11 h-3 text-accent" />
               </p>
-              <h2 className="mt-2 text-[32px] leading-[40px] sm:text-[42px] sm:leading-[50px] lg:text-[52px] lg:leading-[62px] xl:text-[58px] xl:leading-[68px] font-bold tracking-[-0.015em] text-white">
+              <h2 className="mt-2 text-[26px] leading-[34px] sm:text-[38px] sm:leading-[46px] lg:text-[50px] lg:leading-[60px] xl:text-[58px] xl:leading-[68px] font-bold tracking-[-0.015em] text-white">
                 What Clients Say About Working Together
               </h2>
               {hasPlaceholders && (
@@ -122,7 +122,7 @@ export default function TestimonialsSection() {
                   onClick={() => setActiveIndex(idx)}
                   className={`${
                     isActive ? "flex" : "hidden lg:flex"
-                  } flex-col justify-between rounded-[20px] bg-canvas text-heading p-8 sm:p-10 transition-all duration-500 ease-out cursor-pointer ${
+                  } flex-col justify-between rounded-[20px] bg-canvas text-heading p-5 sm:p-8 lg:p-10 transition-all duration-500 ease-out cursor-pointer ${
                     isActive
                       ? "lg:-translate-y-[28px] ring-2 ring-accent opacity-100"
                       : "opacity-85 hover:opacity-100"
@@ -130,7 +130,7 @@ export default function TestimonialsSection() {
                 >
                   <div>
                     {/* 5-Star Rating Bar (#ffd234) + Optional Placeholder Pill */}
-                    <div className="flex items-center justify-between gap-3 mb-6">
+                    <div className="flex items-center justify-between gap-3 mb-5 sm:mb-6">
                       <div
                         className="flex items-center gap-1 text-rating"
                         aria-label={`${item.rating || 5} out of 5 stars`}
@@ -139,7 +139,7 @@ export default function TestimonialsSection() {
                           (_, starIdx) => (
                             <RatingStarIcon
                               key={starIdx}
-                              className="w-[18px] h-[18px]"
+                              className="w-[16px] h-[16px] sm:w-[18px] sm:h-[18px]"
                             />
                           )
                         )}
@@ -151,15 +151,15 @@ export default function TestimonialsSection() {
                       )}
                     </div>
 
-                    {/* Quote Text (Ashik 18px/30px #222222) */}
-                    <p className="text-[17px] sm:text-[18px] leading-[29px] sm:leading-[30px] text-heading">
+                    {/* Quote Text */}
+                    <p className="text-[15px] sm:text-[17px] lg:text-[18px] leading-[26px] sm:leading-[29px] lg:leading-[30px] text-heading">
                       &ldquo;{item.quote}&rdquo;
                     </p>
                   </div>
 
-                  {/* Client Attribution Row (60x60 Circular Avatar) */}
-                  <div className="mt-8 pt-6 border-t border-border-light flex items-center gap-4">
-                    <div className="relative w-[56px] h-[56px] sm:w-[60px] sm:h-[60px] rounded-full overflow-hidden bg-surface border border-black/10 flex items-center justify-center shrink-0">
+                  {/* Client Attribution Row */}
+                  <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-border-light flex items-center gap-3.5 sm:gap-4">
+                    <div className="relative w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] rounded-full overflow-hidden bg-surface border border-black/10 flex items-center justify-center shrink-0">
                       {item.avatar ? (
                         <Image
                           src={item.avatar}
@@ -169,16 +169,16 @@ export default function TestimonialsSection() {
                           className="object-cover"
                         />
                       ) : (
-                        <span className="text-[16px] font-bold text-heading">
+                        <span className="text-[15px] sm:text-[16px] font-bold text-heading">
                           {item.initials || item.number}
                         </span>
                       )}
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-[17px] leading-[24px] font-bold text-heading truncate">
+                      <h3 className="text-[16px] sm:text-[17px] leading-[22px] sm:leading-[24px] font-bold text-heading truncate">
                         {item.name}
                       </h3>
-                      <p className="text-[14px] leading-[20px] text-body">
+                      <p className="text-[13px] sm:text-[14px] leading-[19px] sm:leading-[20px] text-body truncate">
                         {item.role}
                       </p>
                     </div>

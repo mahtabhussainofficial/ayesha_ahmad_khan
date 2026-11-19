@@ -27,7 +27,7 @@ export default function SectionHeading({
         </p>
       )}
       <h2
-        className={`text-[32px] leading-[40px] sm:text-[42px] sm:leading-[50px] lg:text-[52px] lg:leading-[62px] xl:text-[60px] xl:leading-[70px] font-bold tracking-[-0.015em] ${
+        className={`text-[26px] leading-[34px] sm:text-[38px] sm:leading-[46px] lg:text-[48px] lg:leading-[58px] xl:text-[60px] xl:leading-[70px] font-bold tracking-[-0.015em] ${
           dark ? "text-white" : "text-heading"
         }`}
       >

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { BrandLogo } from "@/components/ui/Icons";
 import Button from "@/components/ui/Button";
 import MobileDrawer from "@/components/layout/MobileDrawer";
@@ -12,13 +14,42 @@ import { profile } from "@/data/profile";
  * - Default desktop: position absolute, top 0, pt-[30px] over white Hero
  * - Scrolled sticky (> 120px): position fixed, py-[15px], #ffffff, drop shadow, slideDown
  * - Deterministic scroll-position active section tracking (works cleanly on tall sections like #projects)
+ * - Route-aware subpage active state: highlights SERVICES on /services/* and PROJECTS on /projects/*
  * - Mobile (< 1024px / lg): 51x51px circular hamburger toggle opening MobileDrawer
  */
 export default function Header() {
+  const pathname = usePathname();
   const [isSticky, setIsSticky] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [scrolledSection, setScrolledSection] = useState("home");
   const menuToggleRef = useRef(null);
+
+  // Derive active navigation state directly from route, falling back to scroll position on homepage
+  const activeSection = pathname.startsWith("/services")
+    ? "services"
+    : pathname.startsWith("/projects")
+    ? "projects"
+    : scrolledSection;
+
+  const handleNavClick = (e, linkId) => {
+    setScrolledSection(linkId);
+    if (pathname === "/" || pathname === "") {
+      if (linkId === "home") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.location.hash) {
+          history.pushState(null, "", "/#home");
+        }
+      } else {
+        const target = document.getElementById(linkId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+          history.pushState(null, "", `#${linkId}`);
+        }
+      }
+    }
+  };
 
   useEffect(() => {
     let frameId = null;
@@ -28,28 +59,31 @@ export default function Header() {
       const scrollY = window.scrollY;
       setIsSticky(scrollY > 120);
 
-      // If near the bottom of the page, highlight the last section (Contact)
-      const nearBottom =
-        window.innerHeight + scrollY >=
-        document.documentElement.scrollHeight - 40;
-      if (nearBottom) {
-        setActiveSection(navLinks[navLinks.length - 1].id);
-        return;
-      }
+      // Only track section positions on the homepage
+      if (pathname === "/" || pathname === "") {
+        // If near the bottom of the page, highlight the last section (Contact)
+        const nearBottom =
+          window.innerHeight + scrollY >=
+          document.documentElement.scrollHeight - 40;
+        if (nearBottom) {
+          setScrolledSection(navLinks[navLinks.length - 1].id);
+          return;
+        }
 
-      // Deterministic check: pick the last nav section whose top crossed 180px from viewport top
-      const offset = 180;
-      let current = navLinks[0].id;
-      for (const link of navLinks) {
-        const el = document.getElementById(link.id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= offset) {
-            current = link.id;
+        // Deterministic check: pick the last nav section whose top crossed 180px from viewport top
+        const offset = 180;
+        let current = navLinks[0].id;
+        for (const link of navLinks) {
+          const el = document.getElementById(link.id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= offset) {
+              current = link.id;
+            }
           }
         }
+        setScrolledSection(current);
       }
-      setActiveSection(current);
     };
 
     const handleScroll = () => {
@@ -66,7 +100,7 @@ export default function Header() {
       window.removeEventListener("resize", handleScroll);
       if (frameId !== null) window.cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <>
@@ -79,14 +113,14 @@ export default function Header() {
       >
         <div className="ashik-container flex items-center justify-between gap-6">
           {/* Brand Logo */}
-          <a
-            href="#home"
-            onClick={() => setActiveSection("home")}
+          <Link
+            href="/#home"
+            onClick={(e) => handleNavClick(e, "home")}
             aria-label={`${profile.fullName} — Home`}
             className="shrink-0"
           >
             <BrandLogo />
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav aria-label="Primary Navigation" className="hidden lg:block">
@@ -95,9 +129,9 @@ export default function Header() {
                 const isActive = activeSection === link.id;
                 return (
                   <li key={link.id}>
-                    <a
+                    <Link
                       href={link.href}
-                      onClick={() => setActiveSection(link.id)}
+                      onClick={(e) => handleNavClick(e, link.id)}
                       className={`relative py-1.5 text-[16px] font-medium uppercase leading-[24px] text-heading transition-colors after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0 after:h-[3px] after:rounded-full after:bg-accent after:origin-left after:transition-transform after:duration-300 ${
                         isActive
                           ? "after:scale-x-100 text-contrast font-semibold"
@@ -105,7 +139,7 @@ export default function Header() {
                       }`}
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
@@ -115,10 +149,10 @@ export default function Header() {
           {/* Desktop Contact CTA */}
           <div className="hidden lg:block shrink-0">
             <Button
-              href="#contact"
+              href="/#contact"
               variant="secondary"
               size="header"
-              onClick={() => setActiveSection("contact")}
+              onClick={(e) => handleNavClick(e, "contact")}
               className="!uppercase tracking-[0.03em]"
             >
               LET&apos;S TALK

@@ -1,4 +1,8 @@
+"use client";
+
+import Link from "next/link";
 import { BrandLogo } from "@/components/ui/Icons";
+import { prefersReducedMotion } from "@/lib/animations";
 import SocialLinks from "@/components/ui/SocialLinks";
 import { navLinks } from "@/data/navigation";
 import { profile } from "@/data/profile";
@@ -8,6 +12,13 @@ import { profile } from "@/data/profile";
  * brand summary & anchor navigation, clean copyright bar — zero demo switcher links).
  */
 export default function Footer() {
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion() ? "auto" : "smooth",
+    });
+  };
+
   return (
     <footer className="mt-[80px] lg:mt-[120px] bg-surface pt-[64px] lg:pt-[75px] pb-[30px] relative z-10">
       <div className="ashik-container">
@@ -28,9 +39,9 @@ export default function Footer() {
           {/* Right Column: Brand Summary + Quick Navigation */}
           <div className="lg:col-span-4 lg:col-start-9 flex flex-col justify-between gap-8">
             <div>
-              <a href="#home" aria-label={`${profile.fullName} — Home`}>
+              <Link href="/#home" aria-label={`${profile.fullName} — Home`}>
                 <BrandLogo />
-              </a>
+              </Link>
               <p className="mt-5 text-[16px] leading-[28px] text-body">
                 {profile.footer.summary}
               </p>
@@ -40,12 +51,12 @@ export default function Footer() {
               <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
                 {navLinks.map((link) => (
                   <li key={link.id}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-[15px] font-medium text-heading hover:text-contrast underline-offset-4 hover:underline decoration-accent decoration-2 transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -58,12 +69,13 @@ export default function Footer() {
           <p>
             © {profile.footer.copyrightYear} {profile.footer.copyrightName}. All Rights Reserved.
           </p>
-          <a
-            href="#home"
-            className="font-medium text-heading hover:text-contrast underline-offset-4 hover:underline decoration-accent decoration-2 transition-colors"
+          <button
+            type="button"
+            onClick={handleScrollTop}
+            className="font-medium text-heading hover:text-contrast underline-offset-4 hover:underline decoration-accent decoration-2 transition-colors cursor-pointer"
           >
             Back to top
-          </a>
+          </button>
         </div>
       </div>
     </footer>
